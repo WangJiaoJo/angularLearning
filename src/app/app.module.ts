@@ -17,6 +17,8 @@ import { HeroSearchComponent }  from './hero-search/hero-search.component';
 import { MessagesComponent }    from './messages/messages.component';
 import { FruitsComponent } from './fruits/fruits.component';
 import { FruitDetailComponent } from './fruit-detail/fruit-detail.component';
+import { LearningComponent } from './learning/learning/learning.component';
+import { ArchitectureComponent } from './learning/architecture/architecture.component';
 
 @NgModule({
   imports: [
@@ -43,7 +45,9 @@ import { FruitDetailComponent } from './fruit-detail/fruit-detail.component';
     MessagesComponent,
     HeroSearchComponent,
     FruitsComponent,
-    FruitDetailComponent
+    FruitDetailComponent,
+    LearningComponent,
+    ArchitectureComponent
   ],
   bootstrap: [ AppComponent ]
 })

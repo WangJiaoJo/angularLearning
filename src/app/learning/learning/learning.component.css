@@ -1,0 +1,30 @@
+.topics-list {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.topic {
+    list-style: none;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #eee;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.topic a {
+    text-decoration: none;
+}
+
+.topic a:visited {
+    color: #608D8B;
+}
+
+.topic:hover {
+    background-color: #CFD8DC;
+}
+
+.topic:hover a {
+    color: #039BE5;
+}
