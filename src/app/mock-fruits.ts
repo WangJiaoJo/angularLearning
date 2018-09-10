@@ -10,5 +10,6 @@ export const FRUITS: Fruit[] = [
     { id: 7, name: 'Watermelon', description: 'green color and sweet' },
     { id: 8, name: 'Strawberry', description: 'red color and sweet' },
     { id: 9, name: 'Pear', description: 'green color and sweet' },
-    { id: 10, name: 'Lichi', description: 'red color and sweet' }
+    { id: 10, name: 'Lichi', description: 'red color and sweet' },
+    { id: 11, name: 'Melon', description: 'green color and sweet'}
 ];
