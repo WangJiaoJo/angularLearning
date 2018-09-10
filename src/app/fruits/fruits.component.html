@@ -1,0 +1,10 @@
+<div class="fruits-list">
+  <h2>Fruits</h2>
+  <ul>
+    <li class="fruits" *ngFor="let fruit of fruits">
+        <a routerLink="/fruit-detail/{{fruit.id}}">
+          {{fruit.name}}
+        </a>
+    </li>
+  </ul>
+</div>
