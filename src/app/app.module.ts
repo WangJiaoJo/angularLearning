@@ -2,6 +2,7 @@ import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
@@ -19,6 +20,9 @@ import { FruitsComponent } from './fruits/fruits.component';
 import { FruitDetailComponent } from './fruit-detail/fruit-detail.component';
 import { LearningComponent } from './learning/learning/learning.component';
 import { ArchitectureComponent } from './learning/architecture/architecture.component';
+import { FormComponent } from './learning/form/form/form.component';
+import { UserInputComponent } from './learning/form/user-input/user-input.component';
+import { ProfileEditorComponent } from './learning/form/profile-editor/profile-editor.component';
 
 @NgModule({
   imports: [
@@ -26,6 +30,7 @@ import { ArchitectureComponent } from './learning/architecture/architecture.comp
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -47,7 +52,10 @@ import { ArchitectureComponent } from './learning/architecture/architecture.comp
     FruitsComponent,
     FruitDetailComponent,
     LearningComponent,
-    ArchitectureComponent
+    ArchitectureComponent,
+    FormComponent,
+    UserInputComponent,
+    ProfileEditorComponent,
   ],
   bootstrap: [ AppComponent ]
 })

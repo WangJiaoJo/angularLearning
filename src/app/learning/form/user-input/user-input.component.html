@@ -1,0 +1,33 @@
+<h2 (click)="showUserInput=!showUserInput">User Input</h2>
+<div *ngIf="showUserInput">
+  <li class="user-input">
+    <h5>event binding</h5>
+    <button (click)="onClickMe()">Click Me</button>
+    {{clickMessage}}
+  </li>
+  <li class="user-input">
+    <h5>bind to the $event object</h5>
+    <input (keyup)="onKey($event)">{{values}}
+  </li>
+  <li class="user-input">
+    <h5>bind to the template reference variable</h5>
+    <input #box (keyup)="0">{{box.value}}
+  </li>
+  <li class="user-input">
+    <h5>bind to the template reference variable with keyup event</h5>
+    <input #box2 (keyup)="onKey2(box2.value)">{{values2}}
+  </li>
+  <li class="user-input">
+    <h5>bind to Angular keyup.enter pseudo-event</h5>
+    <input #box3 (keyup.enter)="onEnter(box3.value)">{{value}}
+  </li>
+  <li class="user-input">
+    <h5>listen to both keyup.enter event and blur event</h5>
+    <input #box4 (keyup.enter)="update(box4.value)" (blur)="update(box4.value)">{{value2}}
+  </li>
+  <li class="user-input">
+    <input #newHero (keyup.enter)="addHero(newHero.value)" (blur)="addHero(newHero.value); newHero.value='' ">
+    <button (click)="addHero(newHero.value)">Add</button>
+    <ul><li *ngFor="let hero of heroes">{{hero}}</li></ul>
+  </li>
+</div>

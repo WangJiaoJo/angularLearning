@@ -8,6 +8,7 @@ import { FruitsComponent } from './fruits/fruits.component';
 import { FruitDetailComponent } from './fruit-detail/fruit-detail.component';
 import { LearningComponent } from './learning/learning/learning.component';
 import { ArchitectureComponent } from './learning/architecture/architecture.component';
+import { FormComponent } from './learning/form/form/form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'fruit-detail/:id', component: FruitDetailComponent },
   { path: 'learning', component: LearningComponent },
   { path: 'learning/architecture', component: ArchitectureComponent },
+  { path: 'learning/form', component: FormComponent },
 ];
 
 @NgModule({
