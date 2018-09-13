@@ -23,6 +23,8 @@ import { ArchitectureComponent } from './learning/architecture/architecture.comp
 import { FormComponent } from './learning/form/form/form.component';
 import { UserInputComponent } from './learning/form/user-input/user-input.component';
 import { ProfileEditorComponent } from './learning/form/profile-editor/profile-editor.component';
+import { FormValidationComponent } from './learning/form/form-validation/form-validation.component';
+import { ForbiddennameDirective } from './shared/forbiddenname.directive';
 
 @NgModule({
   imports: [
@@ -56,6 +58,8 @@ import { ProfileEditorComponent } from './learning/form/profile-editor/profile-e
     FormComponent,
     UserInputComponent,
     ProfileEditorComponent,
+    FormValidationComponent,
+    ForbiddennameDirective,
   ],
   bootstrap: [ AppComponent ]
 })
