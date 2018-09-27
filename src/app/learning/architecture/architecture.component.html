@@ -1,26 +1,52 @@
 <h3>NgModule</h3>
 <ul>
   <li>
-    An application has at least one module, which is the root module.
-  </li>
-  <li>
-    configure the injector and the compiler
+    NgModule Introduction
     <ul>
       <li>
-        import other modules
+        An application has at least one module, which is the root module.
       </li>
       <li>
-        declare components, directives and pipes belong to this module
+        configure the injector and the compiler
+        <ul>
+          <li>
+            import other modules
+          </li>
+          <li>
+            declare components, directives and pipes belong to this module
+          </li>
+          <li>
+            make components, directives and pipes be public
+          </li>
+          <li>
+            provide services to the application
+          </li>
+        </ul>
       </li>
       <li>
-        make components, directives and pipes be public
-      </li>
-      <li>
-        provide services to the application
+        organize related things together
       </li>
     </ul>
   </li>
   <li>
-    organize related things together
+    Providers
+    <ul>
+      <li>
+        Dependency Injection about how to obtain value for a dependency.
+        The dependencies are the services created.
+      </li>
+      <li>
+        In user.service.ts, <span class="example-code">provideIn: 'root'</span> specifies that the service should be provided in the root injector, this service will be available throughout the app.
+      </li>
+      <li>
+        In user.service.ts, <span class="example-code">provideIn: UserModule</span> specifies that the service should be provide in the particular <span class="example-code">NgModule</span>, this service will be available unless the app import the <span class="example-code">UserModule</span>.
+      </li>
+      <li>
+        In user.module.ts, <span class="example-code">providers: [UserService]</span> declares a provider for the service within the module.
+      </li>
+      <li>
+        In app.component.ts, <span class="example-code">providers: [UserService]</span> providing a service in the component limits the service only to that component, other components in the same module can't access it.
+      </li>
+    </ul>
   </li>
 </ul>
