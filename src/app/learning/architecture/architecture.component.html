@@ -29,6 +29,17 @@
     </ul>
   </li>
   <li>
+    Declarations
+    <ul>
+      <li>
+        A list of declarable classes, (components, directives, and pipes) that belong to this module.
+      </li>
+      <li>
+        Components, directives, and pipes must belong to exactly one module.
+      </li>
+    </ul>
+  </li>
+  <li>
     Providers
     <ul>
       <li>
@@ -46,6 +57,73 @@
       </li>
       <li>
         In app.component.ts, <span class="example-code">providers: [UserService]</span> providing a service in the component limits the service only to that component, other components in the same module can't access it.
+      </li>
+    </ul>
+  </li>
+  <li>
+    Imports
+    <ul>
+      <li>
+        A list of module which should be folded into this module. Folded means it is as if all the imported NgModule's exported proporties were declared here.
+      </li>
+      <li>
+        Specifically, it is as if the list of modules whose exported components, directives, or pipes are referenced by the component templates were declared in this module.
+      </li>
+      <li>
+        A component template can reference another component, directive, or pipe when the reference is declared in this module or if the imported module has exported it.
+      </li>
+    </ul>
+  </li>
+  <li>
+    Exports
+    <ul>
+      <li>
+        Importing a module does not automatically re-export the imported module's imports.
+      </li>
+      <li>
+        Module B imports Module A, Module A imports the commonModule to use NgIf and does not export the commonModule, Module B cannot use NgIf.
+        If Module A re-exports the commonModule, Module B can use NgIf.
+      </li>
+    </ul>
+  </li>
+  <li>
+    Bootstrap
+    <ul>
+      <li>
+        A list of components that are automatically bootstrapped.
+      </li>
+      <li>
+        Usually there's only one component in this list, the root component of the application.
+      </li>
+      <li>
+        Angular can launch with multiple bootstrap components, each with its own location in the host web page.
+      </li>
+      <li>
+        A bootstrap component is automatically added to entryComponents.
+      </li>
+    </ul>
+  </li>
+  <li>
+    entryComponents
+    <ul>
+      <li>
+        A list of components that can be dynalically loaded into the view.
+      </li>
+      <li>
+        By default, an Angular app always has at least one entry components, the root component, AppComponent.
+        Its purpose is to serve as a point of entry into the app, that is, you bootstrap it to launch the app.
+      </li>
+      <li>
+        Routed component are also entry components because they need to be loaded automatically.
+      </li>
+      <li>
+        While the bootstrapped components are entry components, you don't have to add them to a module's entryComponents list, as they are loaded implicitly.
+      </li>
+      <li>
+        Angular automaticall adds components in the module's bootstrap and route definition into the entryComponents list.
+      </li>
+      <li>
+        Dynamic component loading is not common in most apps beyond the router. If you need to dynamically load components, you must add these components to the entryComponents list yourself.
       </li>
     </ul>
   </li>
