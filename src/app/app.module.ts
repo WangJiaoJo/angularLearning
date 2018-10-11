@@ -25,6 +25,7 @@ import { UserInputComponent } from './learning/form/user-input/user-input.compon
 import { ProfileEditorComponent } from './learning/form/profile-editor/profile-editor.component';
 import { FormValidationComponent } from './learning/form/form-validation/form-validation.component';
 import { ForbiddenValidatorDirective } from './shared/forbiddenname.directive';
+import { DependencyInjectionComponent } from './learning/dependency-injection/dependency-injection.component';
 
 @NgModule({
   imports: [
@@ -60,6 +61,7 @@ import { ForbiddenValidatorDirective } from './shared/forbiddenname.directive';
     ProfileEditorComponent,
     FormValidationComponent,
     ForbiddenValidatorDirective,
+    DependencyInjectionComponent,
   ],
   bootstrap: [ AppComponent ]
 })

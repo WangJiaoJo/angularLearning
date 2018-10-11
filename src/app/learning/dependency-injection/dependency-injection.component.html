@@ -1,0 +1,78 @@
+<h2>Dependency Injection</h2>
+<h3>Create and register an injectable service</h3>
+<div>
+  <div class="line-code">@Injectable&#40;&#123;</div>
+  <div class="line-code">&nbsp;&nbsp;providedIn: 'root',</div>
+  <div class="line-code">&#125;&#41;</div>
+</div>
+<div>1. need <span class="example-code">@Injectable&#40;&#41;</span> decorator marks it as a service that can be injected</div>
+<div>2. need to configure an Angular dependency injector with a provider of that service.</div>
+<br/>
+<div>A provider tells an injector how to create the service. A provider can be the service class itself.</div>
+<br/>
+<div>The <span class="example-code">@Injectable</span> decorator has the <span class="example-code">providedIn</span> metadata option, 
+where you can specify the provider of decorated service class with the <span class="example-code">root</span> injector, or with the injector for a specific NgModule.</div>
+<br/>
+<div>The <span class="example-code">@NgModule</span> and <span class="example-code">@Component</span> decorators option, where you can configure providers for NgModule-level 
+or component-level injectors.</div>
+<br/>
+<div>Components are directives, and the <span class="example-code">providers</span> option is inherited from <span class="example-code">@Directive</span>. You can also configure providers for directives and pipes 
+at the same level as the component.</div>
+<br/>
+<div>A component can get services from
+  <div>&nbsp;&nbsp;1. its own injector</div>
+  <div>&nbsp;&nbsp;2. the injectors of its component ancestors</div>
+  <div>&nbsp;&nbsp;3. the injector of its parent module</div>
+  <div>&nbsp;&nbsp;4. the root injector</div>
+</div>
+
+<h3>Injecting services</h3>
+<div>Inject a dependency in a component's constructor by specifying a constructor parameter with the dependency type.</div>
+<span class="example-code">constructor(heroService: HeroService)</span>
+<div>Services are singletons within the scope of an injector. There is at most one instance of a service in a given injector.</div>
+<br/>
+<div>Providing <span class="example-code">UserService</span> at the <span class="example-code">root</span> or <span class="example-code">AppModule</span> level means it is registered with the root injector.</div>
+<div>There is just one <span class="example-code">UserService</span> instance in the entire app and every class that injects <span class="example-code">UserService</span> gets this service instance unless you configure another 
+provider with a child injector.</div>
+<div>Injector inheritance: Angular can inject a service by an injector in that lineage(its parent component's injector, its parent's parent's injector).</div>
+
+<h3>Services that need other services</h3>
+<div>Service can have their own dependencies.</div>
+<br/>
+<div>Optional dependencies</div>
+<div class="line-code"><span class="example-code">import &#123; Optional &#125; from '@angular/core';</span></div>
+<div class="line-code"><span class="example-code">constructor&#40;@Optional&#40;&#41; private logger: Logger&#41; &#123;</span></div>
+<div class="line-code"><span class="example-code">&nbsp;&nbsp;if &#40;this.logger&#41; &#123;</span></div>
+<div class="line-code"><span class="example-code">&nbsp;&nbsp;&nbsp;&nbsp;this.logger.log&#40;some_message;&#41;</span></div>
+<div class="line-code"><span class="example-code">&nbsp;&nbsp;&#125;</span></div>
+<div class="line-code"><span class="example-code">&#125;</span></div>
+
+<h3>Hierarchical Injectors</h3>
+<div>An internal platform-level injector is shared by all running apps.</div>
+<div>The <span class="example-code">AppModule</span> injector is the root of an app-wide injector hierarchy, and within an NgModule, directive-level injectors
+follow the structure of the component hierarchy.</div>
+<br/>
+<div>Where to configure providers lead to differences in the final bundle size, service scope, and service lifetime.</div>
+<h4>Platform Injector</h4>
+<div><span class="example-code">providedIn: 'root'</span>: configuring the root injector for the app, which is the injector for <span class="example-code">AppModule</span>.</div>
+<div>Platform injector is the actual root, the parent of app-root injectors, allows multiple apps to share a platform configuration.</div>
+<h4>NgModule-level providers</h4>
+<div><span class="example-code">@Injectable() providedIn</span> option with some module other than the root <span class="example-code">AppModule</span>.</div>
+<div><span class="example-code">@NgModule() providers</span> metadata option, when a module is lazy-loaded.</div>
+<div><span class="example-code">providers: &#91;</span></div>
+<div>&nbsp;&nbsp;<span class="example-code">&#123; provide: LocationStrategy, useClass: HashLocationStrategy &#125;</span></div>
+<div><span class="example-code">&#93;</span></div>
+<br/>
+<div>For both root-level and module-level injectors, a service instance lives for the life of the app or module, and Angular injects this one service instance in every class that needs it.</div>
+<h4>Component-level providers</h4>
+<div>configure each component instance's own injector.</div>
+<div>Angular can only inject the corresponding services in that component instance or one of its descendant component instances. Angular cannot inject the same service instance in anywhere else.</div>
+<div>A component-provided service may have a limited lifetime. Each new instance of component gets its own instance of the service. When the component instance is destroyed, so is that service instance.</div>
+<div><span class="example-code">@Component&#40;&#123;</span></div>
+<div>&nbsp;&nbsp;<span class="example-code">selector: 'app-heroes',</span></div>
+<div>&nbsp;&nbsp;<span class="example-code">providers: &#91; HeroService &#93;,</span></div>
+<div>&nbsp;&nbsp;<span class="example-code">template: `</span></div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="example-code">&#60;h2&#62;Heroes&#60;/h2;&#62;</span></div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;&#60;<span class="example-code">app-hero-list&#62;&#60;/app-hero-list&#62;</span></div>
+<div>&nbsp;&nbsp;<span class="example-code">`</span></div>
+<div><span class="example-code">&#125;&#41;</span></div>

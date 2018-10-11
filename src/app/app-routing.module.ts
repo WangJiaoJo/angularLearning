@@ -9,6 +9,7 @@ import { FruitDetailComponent } from './fruit-detail/fruit-detail.component';
 import { LearningComponent } from './learning/learning/learning.component';
 import { ArchitectureComponent } from './learning/architecture/architecture.component';
 import { FormComponent } from './learning/form/form/form.component';
+import { DependencyInjectionComponent } from './learning/dependency-injection/dependency-injection.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'learning', component: LearningComponent },
   { path: 'learning/architecture', component: ArchitectureComponent },
   { path: 'learning/form', component: FormComponent },
+  { path: 'learning/dependencies-injection', component: DependencyInjectionComponent },
 ];
 
 @NgModule({
