@@ -76,3 +76,26 @@ follow the structure of the component hierarchy.</div>
 <div>&nbsp;&nbsp;&nbsp;&nbsp;&#60;<span class="example-code">app-hero-list&#62;&#60;/app-hero-list&#62;</span></div>
 <div>&nbsp;&nbsp;<span class="example-code">`</span></div>
 <div><span class="example-code">&#125;&#41;</span></div>
+<h4>Element injectors</h4>
+<div>An injector does not actually belong to a component, but rather to the component instance's anchor element in the DOM.</div>
+<div>When you configure a provider for a component or directive using the <span class="example-code">providers</span> property, that providers belongs to the injector for the anchor DOM elment. Components and directives on the same element share an injector.</div>
+
+<h3>Injector bubbling</h3>
+<div>When a component requests a dependency, Angular tries to satifsfy that dependency with a provider registered in that component's own injector.</div>
+<div>If the component's injector lacks the provider, it passes the request up to its parent component's injector.</div>
+<div>If that injector can't satisfy the request, it passes the request along to the next parent injector up the tree.</div>
+<div>The requests keep bubbling up until Angular finds an injector that can handle the request or runs out of ancestor injectors.</div>
+<div>If it runs our of ancestors, Angular throws an error.</div>
+<div>If you have registered a provider for the same DI token at different levels, the first one Angular encouters is the one it uses to provide the dependency.</div>
+<div>If a provider is registered locally in the component that needs a service, Angular doesn't look for another provider of the same service.</div>
+<div>If you only register providers with the roor injector at the top level(typically the root <span class="example-code">AppModule</span>), the tree on injectors appears to be flat.</div>
+<div>All requests bubble up to the root injector, whether you configured it with <span class="example-code">bootstrapModule</span> method, or registered all providers with <span class="example-code">root</span> in thier own services.</div>
+
+<h3>Component injectors</h3>
+<h4>Scenario: service location</h4>
+<div>Providing a service at root module would cause the risk that if modifying the service, this could break something elsewhere.</div>
+<div>By providing a service in the component metadata and nowhere else, the service becomes available only in the component and its sub-component tree.</div>
+<h4>Scenario: mutiple edit sessions</h4>
+<div>Providing the service at the component level ensures that every instance of the component gets its own, private instance of the service, and no tax return gets overwritten.</div>
+<h4>Scenario: specialized providers</h4>
+<div>Another reason to re-provide a service at another level is to substitute a more specialized implementation of that service, deeper in the component tree.</div>
